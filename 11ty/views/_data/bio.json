@@ -1,0 +1,34 @@
+{
+  "imgUrl": "/assets/me.jpg",
+  "name": "Nico Braun",
+  "age": 31,
+  "profession": "DevOps Engineer",
+  "description": "Hi, I am a self taught developer and IT specialist. My current role is DevOps engineer, at an enterprise with contact centers all around the world.I create resilent solutions to deliver web applications in the cloud and on premise.",
+  "interests": [
+    "playing guitar & piano",
+    "chess",
+    "world travel"
+  ],
+  "skills": [
+    "Web Development & Web Related Technologies including backend Programming with JavaScript, Python, Go & more",
+    "AWS Cloud / Hybrid Cloud",
+    "SQL Server, MySQL",
+    "Container Technologies",
+    "Infrastructure Engineering and application delivery",
+    "Shell Scripting with Bash & Powershell",
+    "CyberSecurity & Pentesting",
+    "Git, Bitbucket & Jira",
+    "Agile Methodology"
+  ],
+  "langauges": [
+    {
+      "name": "German",
+      "level": "Native"
+    },
+    {
+      "name": "English",
+      "level": "Business"
+    }
+  ],
+  "github": "https://github.com/bluebrown"
+}

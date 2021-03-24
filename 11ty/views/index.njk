@@ -1,0 +1,137 @@
+---
+layout: base.njk
+---
+
+
+
+<!--section name="hero" class="bg-gray-900 text-gray-100 text-lg p-6 shadow-md h-64 relative">
+  <code id="ticker-code">$ sudo rm -rf /*</code> <br>
+  <code id="ticker-code">$ sudo rm -rf /*</code> <br>
+  <code id="ticker-code">$ sudo rm -rf /*</code> <br>
+  <div clas="bg-gray-900 absolute w-full h-full">
+
+  </div>
+</section-->
+
+
+<article name="notification" class="text-xl relative text-blue-900 text-center p-6 bg-blue-100 border-blue-200 border-2">
+  <p>The content of this page was fetched from various API's. The page was generated with 11ty. <a href="">Visit the repo to create your own!</a> </p>
+  <button onclick="closeNotif(event)"  class="absolute top-7 right-7"><span class="pointer-events-none">{%include "icons/cancel.njk" %}</span></button>
+  <script>function closeNotif({target}) {target.parentElement.remove()}</script>
+</article>
+
+
+<main id="main">
+
+  <section name="linkedin" class="py-16">
+    <div class="container mx-auto">
+      <h2 class="text-3xl text-gray-700 mb-6">The Author</h2>
+      <div class="flex bg-white rounded-md p-8 hover:shadow-md">
+        <div class=" px-5">
+          <h1 class="text-4xl text-center text-gray-800 leading-loose">{{bio.name}}</h1>
+          <p class="text-center text-2xl text-gray-800">{{bio.description}}</p>
+          <p class="text-center pt-2"></p>
+        </div>
+        <div class="px-5">
+          <img src="{{bio.imgUrl}}" alt="nico braun" class="w-96" />
+        </div>
+      </div>
+      <div class="flex w-full justify-center mt-4">
+        <a href="https://www.linkedin.com/in/nico-braun" class="flex items-center mt-6 mx-auto text-xl px-3 py-2 border-2 text-blue-500 border-blue-500 rounded-md
+          hover:text-white hover:border-blue-700 hover:bg-blue-700 hover:shadow-md">
+          <span class="mr-2"> See more on LinkedIn</span>
+          {% include "icons/linkedin.njk" %}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section name="featured_posts" class="py-16">
+    <div class="container mx-auto">
+      <h2 class="text-3xl text-gray-700 mb-6">Featured Dev.to Posts</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 min-h-0">
+        {% for post in devposts %}
+        <a href="{{post.canonical_url}}" class="bg-white shadow-sm hover:shadow-lg rounded-md">
+          <div class="rounded-t-md"><img src="{{post.social_image}}" alt="post hero" class="rounded-t-md"></div>
+          <section class="p-6 ">
+            <h1 class="text-3xl">{{post.title}}</h1>
+            <p class="text-gray-700 text-sm">Likes: {{post.positive_reactions_count}} &nbsp; Comments: {{post.comments_count}}</p>
+            <p>{{post.description}}</p>
+            <p class="text-sm text-gray-500 leading-loose">{{post.published_timestamp.substring(0,10)}}</p>
+          </section>
+        </a>
+        {% endfor %}
+      </div>
+      <div class="flex w-full justify-center mt-4">
+        <a href="https://dev.to/codingsafari" class="flex items-center mt-6 mx-auto text-xl px-3 py-2 border-2 text-blue-500 border-blue-500 rounded-md
+          hover:text-white hover:border-blue-700 hover:bg-blue-700 hover:shadow-md">
+          <span class="mr-2"> See more on Dev.to</span>
+          {% include "icons/devto.njk" %}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section name="pinned_repos" class="py-16">
+    <div class="container mx-auto">
+      <h2 class="text-3xl text-gray-700 mb-6">Pinned Github Repositories</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2  gap-3">
+        {% for repo in repos -%}
+        <a href="{{repo.node.url}}" class="group bg-white p-6 rounded-md cursor-pointer hover:shadow-md">
+          <h1 class="text-2xl text-gray-800 group-hover:text-blue-700">{{repo.node.name}}</h1>
+          <ul class="flex text-sm text-gray-600 -mx-1">
+            {% for lang in repo.node.languages.nodes %}
+            <li class="px-1">
+              {{lang.name}}
+            </li>
+            {% endfor %}
+          </ul>
+          <div class="text-xl text-gray-800">
+            {{repo.node.descriptionHTML | safe}}
+          </div>
+          <p class="text-sm text-gray-500 leading-loose">{{repo.node.createdAt.substring(0,10)}}</p>
+        </a>
+        {%- endfor %}
+      </div>
+      <div class="flex w-full justify-center mt-4">
+        <a href="https://github.com/bluebrown?tab=repositories" class="flex items-center mt-6 mx-auto text-xl px-3 py-2 border-2 text-blue-500 border-blue-500 rounded-md
+          hover:text-white hover:border-blue-700 hover:bg-blue-700 hover:shadow-md">
+          <span class="mr-2"> See more on Github</span>
+          {% include "icons/github.njk" %}
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <section name="stackoverflow_answers" class="py-16">
+    <div class="container mx-auto">
+      <h2 class="text-3xl text-gray-700 mb-6">Top Answers on Stack Overflow</h2>
+      <div class="grid grid-cols-1 gap-3">
+        {% for answer in stackoverflow %}
+        <article class="p-6 bg-white rounded-md shadow-sm hover-shadow-md">
+          <h1 class="text-3xl text-gray-900">{{answer.question.title}}</h1>
+         <p>{% markdown answer.body %} </p>
+          <p class="text-sm text-gray-800 leading-loose"> score: {{answer.score}} </p>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="flex w-full justify-center mt-4">
+      <a href="https://stackoverflow.com/users/9208887/the-fool?tab=profile" class="flex items-center mt-6 mx-auto text-xl px-3 py-2 border-2 text-blue-500 border-blue-500 rounded-md
+        hover:text-white hover:border-blue-700 hover:bg-blue-700 hover:shadow-md">
+        <span class="mr-2"> See more on Stack Overflow</span>
+        {% include "icons/stackoverflow.njk" %}
+      </a>
+    </div>
+  </section>
+  <div class="py-8"></div>
+
+
+  <div class="py-8"></div>
+
+  <!-- implement stack overflow answer section -->
+
+  {% include "footer.njk" %}
+
+</main>
