@@ -1,0 +1,17 @@
+---
+layout: base
+---
+
+<link rel="stylesheet" href="/assets/markdown.css">
+
+<section class="container max-w-3xl mx-auto min-h-screen">
+  <article class="p-6 rounded-md bg-white shadow-md markdown-body my-12">
+    <h1>{{title}}</h1>
+    {{content | safe }}
+
+    <div class="text-right">
+      <a href="/">Go back to the homepage</a>
+    </div>
+
+  </article>
+</section>

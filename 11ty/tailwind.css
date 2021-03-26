@@ -4,6 +4,6 @@
 
 @layer components {
   .container {
-    @apply max-w-6xl
+    @apply max-w-4xl
   }
 }

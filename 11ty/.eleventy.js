@@ -1,8 +1,4 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
-let markdown = require("markdown-it")({ html: true });
-
 
 module.exports = function (eleventyConfig) {
 
@@ -28,20 +24,10 @@ module.exports = function (eleventyConfig) {
 
   // Layouts
   eleventyConfig.addLayoutAlias('base', 'base.njk')
-  eleventyConfig.addLayoutAlias('blog', 'blog.njk')
-  eleventyConfig.addLayoutAlias('post', 'post.njk')
+  eleventyConfig.addLayoutAlias('post', 'md-card.njk')
 
   // plugins 
   eleventyConfig.addPlugin(syntaxHighlight);
-
-  // collections
-
-  eleventyConfig.addNunjucksShortcode("preview", function (templateContent) {
-    return (new JSDOM(templateContent)).window.document.body.textContent.substring(0, 420)
-  });
-
-
-  eleventyConfig.addNunjucksShortcode("markdown", (content) => `<div class="md-block">${markdown.render(content)}</div>`);
 
   //base
   return {

@@ -1,32 +1,25 @@
-const request = require('request');
-const { promisify } = require('util')
-const fetch = promisify(request)
+
+const Cache = require("@11ty/eleventy-cache-assets");
 
 module.exports = async function () {
-  try {
-    let res1 = await fetch({
-      method: 'GET',
-      uri: 'https://api.stackexchange.com/2.2/users/9208887/answers?site=stackoverflow&sort=votes&order=desc&pagesize=6&filter=withbody',
-      gzip: true
-    })
-    const { items: answers } = JSON.parse(res1.body)
+  /*
+  let {items: answers = []} = await Cache('https://api.stackexchange.com/2.2/users/9208887/answers?site=stackoverflow&sort=votes&order=desc&pagesize=6&filter=withbody', {
+    duration: "1d", 
+    type: "json",
+  });
 
-    let res2 = await fetch({
-      method: 'GET',
-      uri: `https://api.stackexchange.com/2.2/questions/${answers.map(a => a.question_id).join(';')}?site=stackoverflow`,
-      gzip: true
-    }
-    )
-    const { items: questions } = JSON.parse(res2.body)
+  let {items: questions = []} = await Cache(`https://api.stackexchange.com/2.2/questions/${answers.map(a => a.question_id).join(';')}?site=stackoverflow&&filter=withbody`, {
+    duration: "1d", 
+    type: "json",
+  });
 
-    answers.forEach(a => a.question = questions.find(q => q.question_id === a.question_id))
-    return answers
+  answers.forEach(a => a.question = questions.find(q => q.question_id === a.question_id))
 
-  } catch (error) {
-    console.warn(error);
-    return []
-  }
-}
+  */
+
+  return Promise.resolve([])
+
+};
 
 
 
