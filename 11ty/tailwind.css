@@ -7,7 +7,7 @@
     @apply max-w-4xl px-0 sm:px-3 xl:px-0;
   }
   .caption {
-    @apply text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mb-6;
+    @apply text-center text-2xl sm:text-3xl md:text-left text-gray-700 dark:text-gray-300 mb-6;
   }
   .see-more {
     @apply flex items-center mt-6 mx-auto  lg:text-xl px-3 py-2 border-2 rounded-md hover:shadow-md lg:font-medium
@@ -16,5 +16,19 @@
   }
   .main-surface {
     @apply bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg rounded-md;
+  }
+  .markdown-body {
+    & hr { @apply my-4; }
+    & h1 { @apply text-3xl mt-4 mb-3; }
+    & h2 { @apply text-2xl mt-4 mb-3; }
+    & h3 { @apply text-xl mt-4 mb-3; }
+    & h4 { @apply text-lg mt-4 mb-3; }
+    & p { @apply mb-2; }
+    & code { @apply bg-gray-700 font-mono px-1 rounded-sm text-pink-200; }
+    & pre { 
+      @apply bg-gray-800 border-gray-900 rounded-md px-2 py-1 overflow-auto max-w-full my-3; 
+      & code {@apply bg-transparent px-0 rounded-none text-white;}
+    }
+    & img {@apply mx-auto my-3 ;}
   }
 }

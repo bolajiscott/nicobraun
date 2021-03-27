@@ -5,7 +5,7 @@ layout: base
 
 <a name="landing"></a>
 <section id="hero" class="bg-hero-light dark:bg-hero-dark flex items-center justify-center h-screen bg-fixed">
-  <div class="">
+  <div class="text-center">
   <h1 class="text-6xl dark:text-white font-medium mb-6">Looking for someone?</h1>
   <div class="flex w-full justify-center">
     <a id="explore"
@@ -30,7 +30,6 @@ layout: base
     <a href="" class="underline hover:text-blue-700 dark:hover:text-white">Visit the repo to create your own!</a>
   </p>
 
-  <a class="relative -top-2" name="home"></a>
 </div>
   <button onclick="closeNotif()" class="">
     <span class="pointer-events-none">{%include "icons/cancel.njk" %}</span>
@@ -42,6 +41,7 @@ layout: base
 
 </article>
 
+<a class="relative top-6" name="home"></a>
 
 <div class="flex">
   <aside class="bg-gray-100 dark:bg-gray-600 w-screen max-w-xs relative border-r dark:border-gray-700 hidden md:block">
@@ -68,7 +68,7 @@ layout: base
   <main id="main" class="flex-1 relative">
 
     <section name="linkedin" class="py-16">
-      <a name="bio"></a><a name="home"></a>
+      <a name="bio"></a>
       <div class="container mx-auto">
         <h2 class="caption">The Author</h2>
         <div class="flex flex-col-reverse lg:flex-row p-8 main-surface">
@@ -78,7 +78,7 @@ layout: base
             <p class="text-center pt-2"></p>
           </div>
           <div class="px-5 h-48 w-48 mx-auto lg:h-auto lg:w-auto">
-            <img src="{{bio.imgUrl}}" alt="nico braun" />
+            <img  class="rounded-sm " src="{{bio.imgUrl}}" alt="nico braun" />
           </div>
         </div>
         <div class="flex w-full justify-center mt-4">
@@ -94,7 +94,7 @@ layout: base
       <a name="blog"></a>
       <div class="container mx-auto">
         <h2 class="caption">Featured Dev.to Posts</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 min-h-0">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 min-h-0">
           {% for post in devposts %}
           <a href="{{post.canonical_url}}" class="main-surface">
             <div class="rounded-t-md"><img src="{{post.social_image}}" alt="post hero" class="rounded-t-md"></div>
@@ -121,11 +121,11 @@ layout: base
       <a name="git"></a>
       <div class="container mx-auto">
         <h2 class="caption">Pinned Github Repositories</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2  gap-3">
+        <div class="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-3">
           {% for repo in repos -%}
           <a href="{{repo.node.url}}"
-            class="group p-6 cursor-pointer main-surface">
-            <h1 class="text-2xl text-gray-800 dark:text-gray-200 group-hover:text-blue-700">{{repo.node.name}}</h1>
+            class="p-6 cursor-pointer main-surface">
+            <h1 class="text-2xl text-gray-800 dark:text-gray-200">{{repo.node.name}}</h1>
             <ul class="flex text-gray-600 dark:text-gray-400 -mx-1">
               {% for lang in repo.node.languages.nodes %}
               <li class="px-1">
@@ -157,16 +157,15 @@ layout: base
         <div class="grid grid-cols-1 gap-3">
           {% for answer in so %}
 
-          <a href="https://stackoverflow.com/q/{{answer.answer_id}}/{{answer.owner.user_id}}">
-            <article class="p-6 main-surface">
-              <h1 class="text-2xl text-gray-800 dark:text-gray-200">Q: &nbsp; {{answer.question.title | safe }}</h1>
+          <article class="p-6 main-surface">
+             
+              <a class="text-2xl text-gray-800 dark:text-gray-200">Q: &nbsp;  <a class="text-2xl" href="https://stackoverflow.com/q/{{answer.answer_id}}/{{answer.owner.user_id}}">{{answer.question.title | safe }}</a></h1>
               <br>
               <h2 class="text-2xl text-gray-800 dark:text-gray-200">A: &nbsp; </h2>
               <section class="markdown-body my-2 break-all">{{ answer.body | safe}}</section>
               <p class="text-gray-600 dark:text-gray-400 leading-loose"> score: {{answer.score}} </p>
               <br>
             </article>
-          </a>
           {% endfor %}
         </div>
       </div>
