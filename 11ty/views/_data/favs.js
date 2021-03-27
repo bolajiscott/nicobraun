@@ -13,6 +13,7 @@ module.exports = function () {
     "grafana",
     "traefik",
     "haproxy",
+    "consul",
     "nginx",
     "sql",
     "graphql",

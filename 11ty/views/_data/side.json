@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Biography",
+    "href": "#bio"
+  },
+  {
+    "label": "Blog Posts",
+    "href": "#blog"
+  },
+  {
+    "label": "Github",
+    "href": "#git"
+  },
+  {
+    "label": "Stack Overflow",
+    "href": "#so"
+  },
+  {
+    "label": "Contact",
+    "href": "#contact"
+  }
+]

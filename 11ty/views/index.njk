@@ -3,58 +3,56 @@ layout: base
 ---
 
 
-
-<section name="hero" class="bg-gradient-to-r from-blue-400 dark:from-blue-600 to-blue-600 dark:to-blue-800 h-64 relative">
-
+<a name="landing"></a>
+<section id="hero" class="bg-hero-light dark:bg-hero-dark flex items-center justify-center h-screen bg-fixed">
+  <div class="">
+  <h1 class="text-6xl dark:text-white font-medium mb-6">Looking for someone?</h1>
+  <div class="flex w-full justify-center">
+    <a id="explore"
+    class="dark:text-white  flex items-center mt-4 mx-auto text-3xl px-5 py-3 border-2 border-black dark:border-white rounded-md hover:shadow-md font-medium
+    hover:bg-white hover:border-white  dark:hover:bg-gray-900 dark:hover:border-gray-900" 
+    href="#home">
+      <span class="mr-2"> Find the right person</span>
+      <span class="w-8 h-8">
+        {% include "icons/down-arrow.njk" %}
+      </span>
+    </a>
+  </div>
+  </div>
 </section>
-<div class="p-4 bg-white dark:bg-gray-900 border-black sticky top-0 z-30 flex justify-end">
-  <button onclick="theme()"
-    class="w-12 h-6 rounded-full p-1 bg-gray-300 dark:bg-gray-500 relative focus:outline-none transition-colors duration-500 ease-in">
-    <div id="toggle"
-      class="rounded-full w-4 h-4 bg-blue-500 dark:bg-blue-700 relative ml-0 dark:ml-6 pointer-events-none transition-all duration-300 ease-out">
-    </div>
-  </button>
-</div>
 
-
+{% include "navbar.njk" %}
 <article id="notification"
-  class="text-xl relative text-blue-900 dark:text-blue-100 text-center p-6 bg-blue-100 border-blue-200 dark:bg-blue-800 dark:border-blue-900 border-2">
+  class="hidden sm:flex dark:bg-opacity-50 text-lg absolute w-full z-30 text-blue-900 dark:text-blue-100 text-center px-6 py-1 bg-blue-100 border-blue-200 dark:bg-blue-800 dark:border-blue-900 border-2">
+  
+  <div class="flex-1">
   <p>The content of this page was fetched from various API's. The page was generated with 11ty.
-    <a href="" class="hover:underline hover:text-blue-700 dark:hover:text-white">Visit the repo to create your own!</a>
+    <a href="" class="underline hover:text-blue-700 dark:hover:text-white">Visit the repo to create your own!</a>
   </p>
 
-  <button onclick="closeNotif()" class="absolute top-7 right-7">
+  <a class="relative -top-2" name="home"></a>
+</div>
+  <button onclick="closeNotif()" class="">
     <span class="pointer-events-none">{%include "icons/cancel.njk" %}</span>
   </button>
 
-  <script>function closeNotif() { document.getElementById('notification').remove() }</script>
+  <script>function closeNotif() { 
+      document.getElementById('notification').remove();
+    }</script>
+
 </article>
 
 
 <div class="flex">
-  <aside class="bg-gray-100 dark:bg-gray-700 w-screen max-w-xs relative">
-    <nav class="sticky top-0 w-screen max-w-xs">
+  <aside class="bg-gray-100 dark:bg-gray-600 w-screen max-w-xs relative border-r dark:border-gray-700 hidden md:block">
+    <nav class="sticky top-5 w-screen max-w-xs">
       <ul class="text-center p-6 pt-16">
+        {% for item in side %}
         <li
           class="text-xl rounded-md leading-loose hover:text-blue-700 dark:hover:text-blue-300 border my-2 bg-white dark:bg-gray-900 dark:border-black hover:shadow-md active:shadow-none">
-          <a class="px-3 py-1 block w-full h-full" href="#bio">Biography</a>
+          <a class="px-3 py-1 block w-full h-full" href="{{item.href}}">{{item.label}}</a>
         </li>
-        <li
-          class="text-xl rounded-md leading-loose hover:text-blue-700 dark:hover:text-blue-300 border my-2 bg-white dark:bg-gray-900 dark:border-black hover:shadow-md active:shadow-none">
-          <a class="px-3 py-1 block w-full h-full" href="#blog">Blog Posts</a>
-        </li>
-        <li
-          class="text-xl rounded-md leading-loose hover:text-blue-700 dark:hover:text-blue-300 border my-2 bg-white dark:bg-gray-900 dark:border-black hover:shadow-md active:shadow-none">
-          <a class="px-3 py-1 block w-full h-full" href="#git">Github</a>
-        </li>
-        <li
-          class="text-xl rounded-md leading-loose hover:text-blue-700 dark:hover:text-blue-300 border my-2 bg-white dark:bg-gray-900 dark:border-black hover:shadow-md active:shadow-none">
-          <a class="px-3 py-1 block w-full h-full" href="#so">Stack Overflow</a>
-        </li>
-        <li
-          class="text-xl rounded-md leading-loose hover:text-blue-700 dark:hover:text-blue-300 border my-2 bg-white dark:bg-gray-900 dark:border-black hover:shadow-md active:shadow-none">
-          <a class="px-3 py-1 block w-full h-full" href="#contact">Contact</a>
-        </li>
+        {% endfor %}
       </ul>
       <section class="px-7 py-5 text-center">
         <h2 class="text-xl mb-2">Favorite Technologies</h2>
@@ -67,25 +65,24 @@ layout: base
     </nav>
   </aside>
 
-  <main id="main" class="flex-1">
+  <main id="main" class="flex-1 relative">
 
     <section name="linkedin" class="py-16">
-      <a name="bio"></a>
+      <a name="bio"></a><a name="home"></a>
       <div class="container mx-auto">
-        <h2 class="text-3xl text-gray-700 dark:text-gray-300 mb-6">The Author</h2>
-        <div class="flex bg-white dark:bg-gray-900 rounded-md p-8 hover:shadow-md">
+        <h2 class="caption">The Author</h2>
+        <div class="flex flex-col-reverse lg:flex-row p-8 main-surface">
           <div class=" px-5">
             <h1 class="text-4xl text-center text-gray-800 dark:text-gray-200 leading-loose">{{bio.name}}</h1>
             <p class="text-center text-2xl text-gray-800 dark:text-gray-200">{{bio.description}}</p>
             <p class="text-center pt-2"></p>
           </div>
-          <div class="px-5">
+          <div class="px-5 h-48 w-48 mx-auto lg:h-auto lg:w-auto">
             <img src="{{bio.imgUrl}}" alt="nico braun" />
           </div>
         </div>
         <div class="flex w-full justify-center mt-4">
-          <a href="https://www.linkedin.com/in/nico-braun" class="flex items-center mt-6 mx-auto text-xl px-3 py-2 border-2 text-blue-500 border-blue-500 rounded-md
-          hover:text-white hover:border-blue-700 hover:bg-blue-700 hover:shadow-md">
+          <a href="https://www.linkedin.com/in/nico-braun" class="see-more">
             <span class="mr-2"> See more on LinkedIn</span>
             {% include "icons/linkedin.njk" %}
           </a>
@@ -96,10 +93,10 @@ layout: base
     <section name="featured_posts" class="py-16">
       <a name="blog"></a>
       <div class="container mx-auto">
-        <h2 class="text-3xl text-gray-700 dark:text-gray-200 mb-6">Featured Dev.to Posts</h2>
+        <h2 class="caption">Featured Dev.to Posts</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 min-h-0">
           {% for post in devposts %}
-          <a href="{{post.canonical_url}}" class="bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg rounded-md">
+          <a href="{{post.canonical_url}}" class="main-surface">
             <div class="rounded-t-md"><img src="{{post.social_image}}" alt="post hero" class="rounded-t-md"></div>
             <section class="p-6 ">
               <h1 class="text-2xl">{{post.title}}</h1>
@@ -112,8 +109,7 @@ layout: base
           {% endfor %}
         </div>
         <div class="flex w-full justify-center mt-4">
-          <a href="https://dev.to/codingsafari" class="flex items-center mt-6 mx-auto text-xl px-3 py-2 border-2 text-blue-500 border-blue-500 rounded-md
-          hover:text-white hover:border-blue-700 hover:bg-blue-700 hover:shadow-md">
+          <a href="https://dev.to/codingsafari" class="see-more">
             <span class="mr-2"> See more on Dev.to</span>
             {% include "icons/devto.njk" %}
           </a>
@@ -124,11 +120,11 @@ layout: base
     <section name="pinned_repos" class="py-16">
       <a name="git"></a>
       <div class="container mx-auto">
-        <h2 class="text-3xl text-gray-700 dark:text-gray-300 mb-6">Pinned Github Repositories</h2>
+        <h2 class="caption">Pinned Github Repositories</h2>
         <div class="grid grid-cols-1 md:grid-cols-2  gap-3">
           {% for repo in repos -%}
           <a href="{{repo.node.url}}"
-            class="group bg-white dark:bg-gray-900 p-6 rounded-md cursor-pointer hover:shadow-md">
+            class="group p-6 cursor-pointer main-surface">
             <h1 class="text-2xl text-gray-800 dark:text-gray-200 group-hover:text-blue-700">{{repo.node.name}}</h1>
             <ul class="flex text-gray-600 dark:text-gray-400 -mx-1">
               {% for lang in repo.node.languages.nodes %}
@@ -137,7 +133,7 @@ layout: base
               </li>
               {% endfor %}
             </ul>
-            <div class="text-xl text-gray-800 dark:text-gray-200">
+            <div class="text-xl text-gray-700 dark:text-gray-300">
               {{ repo.node.descriptionHTML | safe }}
             </div>
             <p class="text-sm text-gray-500 leading-loose">{{repo.node.createdAt.substring(0,10)}}</p>
@@ -145,8 +141,7 @@ layout: base
           {%- endfor %}
         </div>
         <div class="flex w-full justify-center mt-4">
-          <a href="https://github.com/bluebrown?tab=repositories" class="flex items-center mt-6 mx-auto text-xl px-3 py-2 border-2 text-blue-500 border-blue-500 rounded-md
-          hover:text-white hover:border-blue-700 hover:bg-blue-700 hover:shadow-md">
+          <a href="https://github.com/bluebrown?tab=repositories" class="see-more">
             <span class="mr-2"> See more on Github</span>
             {% include "icons/github.njk" %}
           </a>
@@ -158,16 +153,16 @@ layout: base
     <section name="stackoverflow_answers" class="py-16">
       <a name="so"></a>
       <div class="container mx-auto">
-        <h2 class="text-3xl text-gray-700 dark:text-gray-300 mb-6">Top Answers on Stack Overflow</h2>
+        <h2 class="caption">Top Answers on Stack Overflow</h2>
         <div class="grid grid-cols-1 gap-3">
           {% for answer in so %}
 
           <a href="https://stackoverflow.com/q/{{answer.answer_id}}/{{answer.owner.user_id}}">
-            <article class="p-6 bg-white dark:bg-gray-900 rounded-md shadow-sm hover-shadow-md hover:shadow-md">
+            <article class="p-6 main-surface">
               <h1 class="text-2xl text-gray-800 dark:text-gray-200">Q: &nbsp; {{answer.question.title | safe }}</h1>
               <br>
               <h2 class="text-2xl text-gray-800 dark:text-gray-200">A: &nbsp; </h2>
-              <section class="markdown-body my-2">{{answer.body | safe}}</section>
+              <section class="markdown-body my-2 break-all">{{ answer.body | safe}}</section>
               <p class="text-gray-600 dark:text-gray-400 leading-loose"> score: {{answer.score}} </p>
               <br>
             </article>
@@ -176,8 +171,7 @@ layout: base
         </div>
       </div>
       <div class="flex w-full justify-center mt-4">
-        <a href="https://stackoverflow.com/users/9208887/the-fool?tab=profile" class="flex items-center mt-6 mx-auto text-xl px-3 py-2 border-2 text-blue-500 border-blue-500 rounded-md
-        hover:text-white hover:border-blue-700 hover:bg-blue-700 hover:shadow-md">
+        <a href="https://stackoverflow.com/users/9208887/the-fool?tab=profile" class="see-more">
           <span class="mr-2"> See more on Stack Overflow</span>
           {% include "icons/stackoverflow.njk" %}
         </a>

@@ -1,4 +1,5 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const Prism = require('prismjs');
 
 module.exports = function (eleventyConfig) {
 
@@ -28,6 +29,10 @@ module.exports = function (eleventyConfig) {
 
   // plugins 
   eleventyConfig.addPlugin(syntaxHighlight);
+
+  eleventyConfig.addNunjucksShortcode("highligh", (html, lang='javascript') => {
+    return  Prism.highlight(html, Prism.languages[lang], lang);
+  })
 
   //base
   return {
