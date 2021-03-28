@@ -30,9 +30,29 @@ module.exports = function (eleventyConfig) {
   // plugins 
   eleventyConfig.addPlugin(syntaxHighlight);
 
-  eleventyConfig.addNunjucksShortcode("highligh", (html, lang='javascript') => {
-    return  Prism.highlight(html, Prism.languages[lang], lang);
+  // shortCodes
+  eleventyConfig.addNunjucksShortcode("highligh", (html, lang = 'javascript') => {
+    return Prism.highlight(html, Prism.languages[lang], lang);
   })
+
+  const htmlmin = require("html-minifier");
+  var CleanCSS = require('clean-css');
+
+  // transforms
+  eleventyConfig.addTransform("mini", function (content, outputPath) {
+    if (outputPath.endsWith(".html")) {
+      return  htmlmin.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true,
+        minifyJS: true,
+        minifyCSS: true,
+      });
+    }
+
+    return content;
+  });
+
 
   //base
   return {
