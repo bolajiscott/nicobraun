@@ -28,7 +28,7 @@ layout: base
       <a href="" class="underline hover:text-blue-700 dark:hover:text-white">Visit the repo to create your own!</a>
     </p>
   </div>
-  <button onclick="c()" class="">
+  <button title="close" onclick="c()" class="">
     <span class="pointer-events-none">{%include "icons/cancel.njk" %}</span>
   </button>
   <script>function c() { document.getElementById('notification').remove(); }</script>
@@ -50,11 +50,8 @@ layout: base
       </ul>
       <section class="px-7 py-5 text-center">
         <h2 class="text-xl mb-2">Favorite Technologies</h2>
-        <div class="flex justify-center flex-wrap space-x-1 space-y-1">
-          {% for fav in favs %}
-          <div class="rounded-full border bg-white dark:bg-gray-900 dark:border-black px-3 py-1">{{fav}}</div>
-          {% endfor %}
-        </div>
+        {% set tags = favs %}
+        {% include "taglist.njk" %}
       </section>
     </nav>
   </aside>
@@ -96,7 +93,7 @@ layout: base
               <p class="text-gray-600 dark:text-gray-400">Likes: {{post.positive_reactions_count}} &nbsp; Comments:
                 {{post.comments_count}}</p>
               <p class="text-lg">{{post.description}}</p>
-              <p class="text-sm text-gray-500 leading-loose">{{post.published_timestamp.substring(0,10)}}</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-loose">{{post.published_timestamp.substring(0,10)}}</p>
             </div>
             <div class="rounded-t-md w-full"><img src="{{post.social_image}}" alt="post hero" class="rounded-t-md">
             </div>
@@ -131,7 +128,7 @@ layout: base
             <div class="text-xl text-gray-700 dark:text-gray-300">
               {{ repo.node.descriptionHTML | safe }}
             </div>
-            <p class="text-sm text-gray-500 leading-loose">{{repo.node.createdAt.substring(0,10)}}</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-loose">{{repo.node.createdAt.substring(0,10)}}</p>
           </article>
           {%- endfor %}
         </div>
@@ -158,7 +155,7 @@ layout: base
                 <p class="text-gray-600 dark:text-gray-400 leading-loose"> score: </p>
                 <p class="text-xl text-gray-600 dark:text-gray-400 font-mono">{{answer.score}}</p>
                 <div class="flex-1"></div>
-                <p class="text-sm text-green-600 dark:text-green-400 font-thin">
+                <p class="text-sm text-green-700 dark:text-green-400 font-thin">
                   {% if answer.is_accepted %}
                   accepted
                   {% endif %}
