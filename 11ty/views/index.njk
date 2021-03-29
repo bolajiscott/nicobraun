@@ -38,8 +38,8 @@ layout: base
 
 <div class="flex">
 
-  <aside class="bg-gray-100 dark:bg-gray-600 w-screen max-w-xs relative border-r dark:border-gray-700 hidden md:block">
-    <nav class="sticky top-5 w-screen max-w-xs">
+  <aside class="bg-gray-100 dark:bg-gray-600 w-screen max-w-xs 4xl:max-w-ms 5xl:max-w-md relative border-r dark:border-gray-700 hidden md:block">
+    <nav class="sticky top-5 w-full">
       <ul class="text-center p-6 pt-16">
         {% for item in side %}
         <li
@@ -63,8 +63,8 @@ layout: base
 
     <section name="linkedin" class="py-16">
       <a name="bio"></a>
-      <div  class="container mx-auto">
-        <h2  class="caption">The Author</h2>
+      <div class="container mx-auto">
+        <h2 class="caption">The Author</h2>
         <article class="flex flex-col-reverse lg:flex-row p-8 main-surface">
           <div class=" px-5">
             <h1 class="text-4xl text-center text-gray-800 dark:text-gray-200 leading-loose">{{bio.name}}</h1>
@@ -98,7 +98,8 @@ layout: base
               <p class="text-lg">{{post.description}}</p>
               <p class="text-sm text-gray-500 leading-loose">{{post.published_timestamp.substring(0,10)}}</p>
             </div>
-            <div class="rounded-t-md w-full"><img src="{{post.social_image}}" alt="post hero" class="rounded-t-md"></div>
+            <div class="rounded-t-md w-full"><img src="{{post.social_image}}" alt="post hero" class="rounded-t-md">
+            </div>
           </article>
           {% endfor %}
         </div>
@@ -118,7 +119,8 @@ layout: base
         <div class="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-3">
           {% for repo in repos -%}
           <article class="p-6 cursor-pointer main-surface">
-            <h1 class="text-2xl text-gray-800 dark:text-gray-200"> <a href="{{repo.node.url}}">{{repo.node.name}}</a></h1>
+            <h1 class="text-2xl text-gray-800 dark:text-gray-200"> <a href="{{repo.node.url}}">{{repo.node.name}}</a>
+            </h1>
             <ul class="flex text-gray-600 dark:text-gray-400 -mx-1">
               {% for lang in repo.node.languages.nodes %}
               <li class="px-1">
@@ -148,14 +150,34 @@ layout: base
         <h2 class="caption">Top Answers on Stack Overflow</h2>
         <div class="grid grid-cols-1 gap-3">
           {% for answer in stackoverflow %}
-          <article class="p-6 main-surface">
-           <h1>
-             <a href="https://stackoverflow.com/q/{{answer.answer_id}}/{{answer.owner.user_id}}"
-              class="text-2xl text-gray-800 dark:text-gray-200">{{answer.question.title | safe }}</a>
-            </h1>
+          <article class="p-6 main-surface flex ">
+            
+            <section class="flex">
+
+              <div class="text-center mr-4 flex flex-col">
+                <p class="text-gray-600 dark:text-gray-400 leading-loose"> score: </p>
+                <p class="text-xl text-gray-600 dark:text-gray-400 font-mono">{{answer.score}}</p>
+                <div class="flex-1"></div>
+                <p class="text-sm text-green-600 dark:text-green-400 font-thin">
+                  {% if answer.is_accepted %}
+                  accepted
+                  {% endif %}
+                </p>
+              </div>
+              <div class="flex-1">
+              <h1>
+                  <a href="https://stackoverflow.com/q/{{answer.answer_id}}/{{answer.owner.user_id}}"
+                    class="text-2xl text-gray-800 dark:text-gray-200">{{answer.question.title | safe }}
+                  </a>
+                    &nbsp; <span class="text-sm text-gray-600 dark:text-gray-400 font-thin italic">Answered on {% prettyDate answer.creation_date %} </span>
+                </h1>
+              </div>
+     
+
+            </section>
+
             <!--section class="markdown-body my-2 break-all">{{ answer.body | safe}}</section-->
-            <p class="text-gray-600 dark:text-gray-400 leading-loose"> score: {{answer.score}} </p>
-            <br>
+
           </article>
           {% endfor %}
         </div>

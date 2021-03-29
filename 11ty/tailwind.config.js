@@ -13,7 +13,12 @@ module.exports = {
       backgroundImage: theme => ({
         'hero-light': "url('/assets/light.jpg')",
        'hero-dark': "url('/assets/dark.jpg')",
-      })
+      }),
+      screens: {
+        '3xl': '1600px',
+        '4xl': '1940px',
+        '5xl': '2048px',
+      },
     },
   },
   variants: {

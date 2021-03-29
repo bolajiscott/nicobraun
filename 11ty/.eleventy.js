@@ -35,13 +35,18 @@ module.exports = function (eleventyConfig) {
     return Prism.highlight(html, Prism.languages[lang], lang);
   })
 
+  eleventyConfig.addNunjucksShortcode("prettyDate", (unixTime) => {
+    return new Date(unixTime * 1000).toUTCString()
+  })
+
+
   const htmlmin = require("html-minifier");
   var CleanCSS = require('clean-css');
 
   // transforms
   eleventyConfig.addTransform("mini", function (content, outputPath) {
     if (outputPath.endsWith(".html")) {
-      return  htmlmin.minify(content, {
+      return htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
         collapseWhitespace: true,
