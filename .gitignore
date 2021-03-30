@@ -5,3 +5,7 @@ public
 11ty/assets/main.css
 .env
 logs
+*.tfstate*
+*.lock.hcl
+.terraform
+/**/*/.cache

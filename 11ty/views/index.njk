@@ -38,7 +38,7 @@ layout: base
 
 <div class="flex">
 
-  <aside class="bg-gray-100 dark:bg-gray-600 w-screen max-w-xs 4xl:max-w-ms 5xl:max-w-md relative border-r dark:border-gray-700 hidden md:block">
+  <aside class="text-primary bg-gray-100 dark:bg-gray-600 w-screen max-w-xs 4xl:max-w-ms 5xl:max-w-md relative border-r dark:border-gray-700 hidden md:block">
     <nav class="sticky top-5 w-full">
       <ul class="text-center p-6 pt-16">
         {% for item in side %}
@@ -62,10 +62,10 @@ layout: base
       <a name="bio"></a>
       <div class="container mx-auto">
         <h2 class="caption">The Author</h2>
-        <article class="flex flex-col-reverse lg:flex-row p-8 main-surface">
+        <article class="flex flex-col-reverse lg:flex-row p-8 bg-primary card-shadow">
           <div class=" px-5">
-            <h1 class="text-4xl text-center text-gray-800 dark:text-gray-200 leading-loose">{{bio.name}}</h1>
-            <p class="text-center text-2xl text-gray-800 dark:text-gray-200">{{bio.description}}</p>
+            <h1 class="text-4xl text-center leading-loose text-primary">{{bio.name}}</h1>
+            <p class="text-center text-2xl text-secondary">{{bio.description}}</p>
             <p class="text-center pt-2"></p>
           </div>
           <div class="px-5 h-48 w-48 mx-auto lg:h-auto lg:w-auto">
@@ -87,13 +87,13 @@ layout: base
         <h2 class="caption">Featured Dev.to Posts</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 min-h-0">
           {% for post in devposts %}
-          <article class="main-surface flex-col-reverse flex">
+          <article class="bg-primary card-shadow flex-col-reverse flex">
             <div class="p-6 flex-1">
-              <h1 class="text-2xl"> <a href="{{post.canonical_url}}">{{post.title}}</a></h1>
-              <p class="text-gray-600 dark:text-gray-400">Likes: {{post.positive_reactions_count}} &nbsp; Comments:
+              <h1 class="text-2xl text-primary"> <a href="{{post.canonical_url}}">{{post.title}}</a></h1>
+              <p class="text-ternary">Likes: {{post.positive_reactions_count}} &nbsp; Comments:
                 {{post.comments_count}}</p>
-              <p class="text-lg">{{post.description}}</p>
-              <p class="text-sm text-gray-600 dark:text-gray-400 leading-loose">{{post.published_timestamp.substring(0,10)}}</p>
+              <p class="text-xl text-secondary">{{post.description}}</p>
+              <p class="text-sm leading-loose text-ternary">{{post.published_timestamp.substring(0,10)}}</p>
             </div>
             <div class="rounded-t-md w-full"><img src="{{post.social_image}}" alt="post hero" class="rounded-t-md">
             </div>
@@ -115,20 +115,20 @@ layout: base
         <h2 class="caption">Pinned Github Repositories</h2>
         <div class="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-3">
           {% for repo in repos -%}
-          <article class="p-6 cursor-pointer main-surface">
-            <h1 class="text-2xl text-gray-800 dark:text-gray-200"> <a href="{{repo.node.url}}">{{repo.node.name}}</a>
+          <article class="p-6 cursor-pointer bg-primary card-shadow">
+            <h1 class="text-2xl text-primary"> <a href="{{repo.node.url}}">{{repo.node.name}}</a>
             </h1>
-            <ul class="flex text-gray-600 dark:text-gray-400 -mx-1">
+            <ul class="flex -mx-1 text-ternary">
               {% for lang in repo.node.languages.nodes %}
               <li class="px-1">
                 {{lang.name}}
               </li>
               {% endfor %}
             </ul>
-            <div class="text-xl text-gray-700 dark:text-gray-300">
+            <div class="text-xl text-secondary">
               {{ repo.node.descriptionHTML | safe }}
             </div>
-            <p class="text-sm text-gray-600 dark:text-gray-400 leading-loose">{{repo.node.createdAt.substring(0,10)}}</p>
+            <p class="text-sm leading-loose text-ternary">{{repo.node.createdAt.substring(0,10)}}</p>
           </article>
           {%- endfor %}
         </div>
@@ -147,13 +147,13 @@ layout: base
         <h2 class="caption">Top Answers on Stack Overflow</h2>
         <div class="grid grid-cols-1 gap-3">
           {% for answer in stackoverflow %}
-          <article class="p-6 main-surface flex ">
+          <article class="flex p-6 bg-primary card-shadow">
             
             <section class="flex">
 
-              <div class="text-center mr-4 flex flex-col">
-                <p class="text-gray-600 dark:text-gray-400 leading-loose"> score: </p>
-                <p class="text-xl text-gray-600 dark:text-gray-400 font-mono">{{answer.score}}</p>
+              <div class="text-center mr-4 flex flex-col text-ternary">
+                <p class="leading-loose"> score: </p>
+                <p class="text-xl font-mono">{{answer.score}}</p>
                 <div class="flex-1"></div>
                 <p class="text-sm text-green-700 dark:text-green-400 font-thin">
                   {% if answer.is_accepted %}
@@ -164,9 +164,9 @@ layout: base
               <div class="flex-1">
               <h1>
                   <a href="https://stackoverflow.com/q/{{answer.answer_id}}/{{answer.owner.user_id}}"
-                    class="text-2xl text-gray-800 dark:text-gray-200">{{answer.question.title | safe }}
+                    class="text-2xl text-primary">{{answer.question.title | safe }}
                   </a>
-                    &nbsp; <span class="text-sm text-gray-600 dark:text-gray-400 font-thin italic">Answered on {% prettyDate answer.creation_date %} </span>
+                    &nbsp; <span class="text-sm font-thin italic text-ternary">Answered on {% prettyDate answer.creation_date %} </span>
                 </h1>
               </div>
      

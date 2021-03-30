@@ -3,6 +3,21 @@
 @tailwind utilities;
 
 @layer components {
+  .text-primary {
+    @apply text-gray-900 dark:text-gray-100;
+  }
+  .text-secondary {
+    @apply text-gray-800 dark:text-gray-200;
+  }
+  .text-ternary {
+    @apply text-gray-600 dark:text-gray-400;
+  }
+  .bg-primary {
+    @apply bg-white dark:bg-gray-900;
+  }
+  .card-shadow {
+    @apply shadow-sm hover:shadow-lg rounded-md;
+  }
   .container {
     @apply max-w-4xl 4xl:max-w-4xl 5xl:max-w-5xl px-0 sm:px-3 xl:px-0;
   }
@@ -13,9 +28,6 @@
     @apply flex items-center mt-6 mx-auto  lg:text-xl px-3 py-2 border-2 rounded-md hover:shadow-md lg:font-medium
       text-blue-700 border-blue-700 hover:text-white hover:border-blue-700 hover:bg-blue-700
       dark:text-blue-300 dark:border-blue-300 dark:hover:text-white dark:hover:bg-blue-600 dark:hover:border-blue-600;
-  }
-  .main-surface {
-    @apply bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg rounded-md;
   }
   .markdown-body {
     & hr { @apply my-4; }
