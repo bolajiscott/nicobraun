@@ -1,8 +1,11 @@
 const Cache = require("@11ty/eleventy-cache-assets");
 
 module.exports = async function() {
-  let url = "https://dev.to/api/articles?username=codingsafari";
-  let posts = await Cache(url, {
+  
+  const { DEVTO_USERNAME } = process.env
+  if (!DEVTO_USERNAME) return []
+
+  let posts = await Cache( `https://dev.to/api/articles?username=${DEVTO_USERNAME}`, {
     duration: "1d", 
     type: "json",
   });

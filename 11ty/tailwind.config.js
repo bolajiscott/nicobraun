@@ -4,7 +4,7 @@ module.exports = {
     mode: 'all',
     preserveHtmlElements: false,
     content:  [
-      "../public/*.html",
+      "../public/**/*.html",
     ],
   },
   darkMode: 'class',

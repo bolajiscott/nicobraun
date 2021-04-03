@@ -1,24 +1,16 @@
 module.exports = function () {
   let array = [
     "docker",
-    "javascript",
-    "go",
-    "python",
-    "bash",
-    "powershell",
-    "linux",
-    "kubernetes",
-    "nomand",
+    "terraform",
+    "ansible",
     "prometheus",
     "grafana",
-    "traefik",
-    "haproxy",
+    "nomad",
     "consul",
-    "nginx",
-    "sql",
-    "graphql",
-    "dgraph",
-    "fastify"
+    "kubernetes",
+    "javascript",
+    "go",
+    "python"
   ]
 
   for (var i = array.length - 1; i > 0; i--) {

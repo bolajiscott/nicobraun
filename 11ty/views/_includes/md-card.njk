@@ -1,13 +1,18 @@
 ---
 layout: base
 ---
+{% include "navbar.njk" %}
 
 <section class="container max-w-3xl mx-auto min-h-screen">
-  <article class="p-6 my-12 main-surface markdown-body">
-    <h1>{{title}}</h1>
-    {{content | safe }}
+  <div class="py-12">
+  <article class="p-6 my-12 bg-primary text-secondary">
+    <h1 class="text-primary text-3xl">{{title}}</h1>
+    <div>
+      {{content | safe }}
+    </div>
     <div class="text-right">
       <a href="/">Go back to the homepage</a>
     </div>
   </article>
+</div>
 </section>

@@ -35,8 +35,8 @@ module.exports = function (eleventyConfig) {
     return Prism.highlight(html, Prism.languages[lang], lang);
   })
 
-  eleventyConfig.addNunjucksShortcode("prettyDate", (unixTime) => {
-    return new Date(unixTime * 1000).toUTCString()
+  eleventyConfig.addNunjucksShortcode("trimmedIso", (unixTime) => {
+    return new Date(unixTime * 1000).toISOString().substring(0,10)
   })
 
 
