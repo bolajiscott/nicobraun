@@ -3,6 +3,8 @@ const Prism = require('prismjs');
 
 module.exports = function (eleventyConfig) {
 
+  const isProduction = process.env.NODE_ENV==='production'
+
   require('dotenv').config()
 
   // formats
@@ -41,11 +43,10 @@ module.exports = function (eleventyConfig) {
 
 
   const htmlmin = require("html-minifier");
-  var CleanCSS = require('clean-css');
 
   // transforms
   eleventyConfig.addTransform("mini", function (content, outputPath) {
-    if (outputPath.endsWith(".html")) {
+    if (isProduction && outputPath.endsWith(".html")) {
       return htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
@@ -63,7 +64,7 @@ module.exports = function (eleventyConfig) {
   return {
     dir: {
       input: 'views',
-      output: "../public"
+      output: "dist"
 
     },
     passthroughFileCopy: true,

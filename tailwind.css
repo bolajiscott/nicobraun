@@ -43,4 +43,7 @@
     }
     & img {@apply mx-auto my-3 ;}
   }
+  .test {
+    @apply text-red-300;
+  }
 }

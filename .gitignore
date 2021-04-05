@@ -1,11 +1,8 @@
-certs
 node_modules
 package-lock.json
 public
-11ty/assets/main.css
+dist
+build
 .env
 logs
-*.tfstate*
-*.lock.hcl
-.terraform
 /**/*/.cache

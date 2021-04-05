@@ -1,13 +1,14 @@
 {
-  "name": "11ty",
+  "name": "nico-braun",
   "version": "1.0.0",
-  "description": "",
+  "description": "personal website",
   "main": "index.js",
   "scripts": {
-    "css": "postcss tailwind.css -o assets/main.css",
+    "comment": "echo 'export NODE_ENV=production for optimized build output\n'",
+    "build": "npm run build:site && npm run build:css",
+    "build:css": "postcss tailwind.css -o dist/assets/main.css",
+    "build:site": "eleventy",
     "serve": "eleventy --serve --port 3000",
-    "watch": "eleventy --watch",
-    "build": "eleventy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

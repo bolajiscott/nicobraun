@@ -1,20 +1,16 @@
-# Website
+# Personal Developer Page
 
+## Environnement Variables
 
-## Getting Started
+GITHUB_USER=bluebrown
+GITHUB_TOKEN=<secret token>
+STACK_OVERFLOW_ID=9208887
+DEVTO_USERNAME=codingsafari
 
-```
-echo "<!DOCTYPE html><html><head></head><body>ok</body></html>" > $PWD/html/index.html
-docker run --rm  -v $PWD/public:/usr/share/nginx/html -p 80:80 nginx
+## Customize Data
 
-sudo certbot certonly
-sudo cp -r /etc/letsencrypt/live/rainbowstack.dev ./certs
-chmod -R 755 ./certs
+Change personal info in the 3 the data files
 
-docker run  --name web -d \
-  -v $PWD/public:/usr/share/nginx/html \
-  -v $PWD/logs:/var/log/nginx \
-  -v $PWD/certs:/certs \
-  -v $PWD/nginx.conf:/etc/nginx/conf.d/default.conf\
-  -p 80:80 -p 443:443 nginx
-```
+- bio.json
+- social.json
+- favs.js
