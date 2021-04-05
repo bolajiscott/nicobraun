@@ -21,13 +21,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       
-      - name: node modules and 11ty data
+      - name: cache 11ty data
         uses: actions/cache@v2
         with:
           path: |
-            node_modules
             .cache
-          key: build_deps
+          key: 11ty_cache
       
       - name: Install dependencies
         run: npm ci
