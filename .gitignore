@@ -6,3 +6,4 @@ build
 .env
 logs
 /**/*/.cache
+.cache
