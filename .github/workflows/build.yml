@@ -1,12 +1,9 @@
-name: Build Statics
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
+on: [push]
 
 jobs:
-  publish_page:
-    run-on: ubuntu-latest
+  publish_dist:
+    runs-on: ubuntu-latest
+    name: Publish website to linode s3
     steps:
       - uses: actions/checkout@v2
       - name: cache 11ty data
