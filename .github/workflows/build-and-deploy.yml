@@ -19,7 +19,7 @@ jobs:
         uses: bluebrown/publish-to-s3@v1
         with:
           cluster: eu-central-1
-          bucket: rainbowstack.dev
+          bucket: foobarbaz
           object: 'dist/*'
           acl: public
           recursive: true
