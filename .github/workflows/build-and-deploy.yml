@@ -28,4 +28,4 @@ jobs:
           secret_key: ${{ secrets.S3_SECRET_KEY }}
 
       - name: sync website
-        run: s3cmd put sync -r dist/* s3://foobarbaz
+        run: s3cmd sync dist/ s3://foobarbaz
