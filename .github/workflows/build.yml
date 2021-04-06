@@ -20,7 +20,6 @@ jobs:
         with:
           cluster: eu-central-1
           bucket: rainbowstack.dev
-          destination: /website/
           object: 'dist/*'
           recursive: true
           access_key: ${{ secrets.S3_ACCESS_KEY }}
