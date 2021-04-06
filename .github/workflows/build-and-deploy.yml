@@ -21,7 +21,7 @@ jobs:
         run: NODE_ENV=production npm run build
       
       - name: Set up S3cmd cli tool
-        uses: s3-actions/s3cmd@v0.1
+        uses: s3-actions/s3cmd@v0.3
         with:
           cluster: 'eu-central-1'
           access_key: ${{ secrets.S3_ACCESS_KEY }}
