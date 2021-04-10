@@ -88,9 +88,9 @@ layout: base
         <h2 class="caption">Featured Dev.to Posts</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 min-h-0">
           {% for post in devposts %}
-          <article class="bg-primary card-shadow flex-col-reverse flex">
+          <article class="bg-primary card-shadow flex-col-reverse flex relative">
             <div class="p-6 flex-1">
-              <h1 class="text-2xl text-primary"> <a href="{{post.canonical_url}}">{{post.title}}</a></h1>
+              <h1 class="text-2xl text-primary"> <a class=" card-link" href="{{post.canonical_url}}" >{{post.title}}</a></h1>
               <p class="text-ternary">Likes: {{post.positive_reactions_count}} &nbsp; Comments:
                 {{post.comments_count}}</p>
               <p class="text-xl text-secondary">{{post.description}}</p>
@@ -116,8 +116,8 @@ layout: base
         <h2 class="caption">Pinned Github Repositories</h2>
         <div class="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-3">
           {% for repo in repos -%}
-          <article class="p-6 cursor-pointer bg-primary card-shadow">
-            <h1 class="text-2xl text-primary"> <a href="{{repo.node.url}}">{{repo.node.name}}</a>
+          <article class="relative p-6 cursor-pointer bg-primary card-shadow">
+            <h1 class="text-2xl text-primary"> <a class="card-link" href="{{repo.node.url}}">{{repo.node.name}}</a>
             </h1>
             <ul class="flex -mx-1 text-ternary">
               {% for lang in repo.node.languages.nodes %}
@@ -148,10 +148,8 @@ layout: base
         <h2 class="caption">Top Answers on Stack Overflow</h2>
         <div class="grid grid-cols-1 gap-3">
           {% for answer in stackoverflow %}
-          <article class="flex p-6 bg-primary card-shadow">
-            
+          <article class="relative flex p-6 bg-primary card-shadow">
             <section class="flex">
-
               <div class="text-center mr-4 flex flex-col text-ternary">
                 <p class="leading-loose"> score: </p>
                 <p class="text-xl font-mono">{{answer.score}}</p>
@@ -165,7 +163,7 @@ layout: base
               <div class="flex-1">
               <h1>
                   <a href="https://stackoverflow.com/q/{{answer.answer_id}}/{{answer.owner.user_id}}"
-                    class="text-2xl text-primary">{{answer.question.title | safe }}
+                    class="card-link text-2xl text-primary">{{answer.question.title | safe }}
                   </a>
                     &nbsp; <span class="text-sm font-thin text-ternary">{% trimmedIso answer.creation_date %} </span>
                 </h1>
