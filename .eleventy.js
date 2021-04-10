@@ -21,12 +21,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
 
 
-  eleventyConfig.addPassthroughCopy({ "assets/favicon.ico": "/favicon.ico" });
-
-  // this is apparently slow, its better to use a dedicated folder.
+  // this is apparently slow, 
   //eleventyConfig.addPassthroughCopy("views/**/*.(js|css|png|img|jpg|jpeg|ico)");
   
-  eleventyConfig.addPassthroughCopy("assets");
+  //its better to use a dedicated folder.
+  eleventyConfig.addPassthroughCopy({"assets": "."});
 
   // watch asset dir
   eleventyConfig.addWatchTarget("assets");
