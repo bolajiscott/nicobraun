@@ -1,6 +1,10 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const Prism = require('prismjs');
 
+
+const Image = require("@11ty/eleventy-img");
+
+
 module.exports = function (eleventyConfig) {
 
   const isProduction = process.env.NODE_ENV==='production'
@@ -40,7 +44,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksShortcode("trimmedIso", (unixTime) => {
     return new Date(unixTime * 1000).toISOString().substring(0,10)
   })
-
 
   const htmlmin = require("html-minifier");
 
