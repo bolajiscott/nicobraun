@@ -1,8 +1,7 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const Prism = require('prismjs');
+const htmlmin = require("html-minifier");
 
-
-const Image = require("@11ty/eleventy-img");
 
 
 module.exports = function (eleventyConfig) {
@@ -21,9 +20,12 @@ module.exports = function (eleventyConfig) {
   // deep merge to create directory based collections
   eleventyConfig.setDataDeepMerge(true);
 
+
+  eleventyConfig.addPassthroughCopy({ "assets/favicon.ico": "/favicon.ico" });
+
   // this is apparently slow, its better to use a dedicated folder.
   //eleventyConfig.addPassthroughCopy("views/**/*.(js|css|png|img|jpg|jpeg|ico)");
-
+  
   eleventyConfig.addPassthroughCopy("assets");
 
   // watch asset dir
@@ -45,7 +47,6 @@ module.exports = function (eleventyConfig) {
     return new Date(unixTime * 1000).toISOString().substring(0,10)
   })
 
-  const htmlmin = require("html-minifier");
 
   // transforms
   eleventyConfig.addTransform("mini", function (content, outputPath) {
