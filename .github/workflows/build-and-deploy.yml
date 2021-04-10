@@ -32,4 +32,4 @@ jobs:
           secret_key: ${{ secrets.S3_SECRET_KEY }}
 
       - name: sync website
-        run: s3cmd sync --recursive --acl-public dist/ s3://foobarbaz
+        run: s3cmd sync --recursive --acl-public dist/ s3://${{ secrets.S3_DEST_BUCKET }}
