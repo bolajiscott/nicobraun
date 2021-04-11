@@ -1,32 +1,32 @@
 [
   {
     "label": "Github",
-    "href": "https://github.com/bluebrown",
+    "href": "https://github.com/bolajiscott",
     "icon": "github"
   },
   {
     "label": "Twitter",
-    "href": "https://twitter.com/codingsafari",
+    "href": "https://twitter.com/bolajiogidan",
     "icon": "twitter"
   },
   {
     "label": "Linkedin",
-    "href": "https://www.linkedin.com/in/nico-braun",
+    "href": "https://www.linkedin.com/in/bolaji-ogidan-b1704377/",
     "icon": "linkedin"
   },
   {
     "label": "Email",
-    "href": "mailto:rainbowstack@gmail.com",
+    "href": "mailto:fataiogidan@gmail.com",
     "icon": "gmail"
   },
   {
     "label": "Stack Overflow",
-    "href": "https://stackoverflow.com/users/9208887/the-fool?tab=profile",
+    "href": "https://stackexchange.com/users/7578037/ft-scott",
     "icon": "stackoverflow"
   },
   {
     "label": "Dev.to",
-    "href": "https://dev.to/codingsafari",
+    "href": "https://dev.to/bolajiscott",
     "icon": "devto"
   }
 ]
