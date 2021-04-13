@@ -2,10 +2,10 @@
 
 ## Environnement Variables
 
-GITHUB_USER=bluebrown
+GITHUB_USER=bolajiscott
 GITHUB_TOKEN=<secret token>
-STACK_OVERFLOW_ID=9208887
-DEVTO_USERNAME=codingsafari
+STACK_OVERFLOW_ID=5749693
+DEVTO_USERNAME=ftscott
 
 ## Customize Data
 
